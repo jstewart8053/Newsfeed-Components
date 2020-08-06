@@ -41,7 +41,7 @@ function menuMaker(menuItems) {
     div.classList.add('menu')
 
     //iterate over menuItems
-    menuItems = menuItems.forEach(element => {
+    menuItems.forEach(element => {
         element.createElement('li')
     });
     // add menuItems to ul

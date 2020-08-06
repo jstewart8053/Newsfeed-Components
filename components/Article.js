@@ -1,7 +1,7 @@
-// This is the data we will be using to create our articles. Look at it, then proceed to line 93.
-// OPTIONAL: if you're feeling adventurous, try to make this data an export from a different module, and import it here.
+// This is the articleMakerObj we will be using to create our articles. Look at it, then proceed to line 93.
+// OPTIONAL: if you're feeling adventurous, try to make this articleMakerObj an export from a different module, and import it here.
 // You can read about ES6 modules here: https://exploringjs.com/es6/ch_modules.html#sec_basics-of-es6-modules
-const data = [{
+const articleMakerObj = [{
         title: 'Lambda School Students: "We\'re the best!"',
         date: 'Nov 5th, 2018',
         firstParagraph: `Lucas ipsum dolor sit amet ben twi'lek padmé darth darth darth moff hutt organa twi'lek. Ben amidala secura skywalker lando
@@ -108,16 +108,16 @@ const data = [{
 
   Step 3: Don't forget to return something from your function!
 
-  Step 4: Outside your function now, loop over the data. At each iteration you'll use your component
+  Step 4: Outside your function now, loop over the articleMakerObj. At each iteration you'll use your component
   to create a div.article element and append it to the DOM inside div.articles (see index.html).
 
-  Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
+  Step 5: Try adding new article object to the articleMakerObj array. Make sure it is in the same format as the others.
   Refresh the page to see the new article.
 */
 
 var article = document.createElement('div');
 
-function articleMaker(data) {
+function articleMaker(articleMakerObj) {
 
     // create elements
 
@@ -134,12 +134,12 @@ function articleMaker(data) {
     span.classList.add('expandButton')
 
     // add text
-    h2.textContent = data.title;
-    p.textContent = data.date;
+    h2.textContent = articleMakerObj.title;
+    p.textContent = articleMakerObj.date;
     span.textContent = '+';
-    p1.textContent = data.firstParagraph
-    p2.textContent = data.secondParagraph
-    p3.textContent = data.thirdParagraph
+    p1.textContent = articleMakerObj.firstParagraph
+    p2.textContent = articleMakerObj.secondParagraph
+    p3.textContent = articleMakerObj.thirdParagraph
 
     // append child
 
@@ -159,18 +159,23 @@ function articleMaker(data) {
 
     //Step 3: Don't forget to return something from your function!
 
-    return article
+    return articleMakerObj
+
 }
 
-// Step 4: Outside your function now, loop over the data. At each iteration you'll use your component
+// Step 4: Outside your function now, loop over the articleMakerObj. At each iteration you'll use your component
 // to create a div.article element and append it to the DOM inside div.articles (see index.html).
 
 var articles = document.querySelector('.articles');
-data.forEach(article => articles.appendChild(articleMarker(article)))
+
+articleMakerObj.forEach(object => {
+    const articleContent = articleMaker(object)
+    articles.appendChild(articleContent)
+})
 
 
-//  Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
+//  Step 5: Try adding new article object to the articleMakerObj array. Make sure it is in the same format as the others.
 // Refresh the page to see the new article.
 
 var dummyArticle = ({ title: 'foo', date: 'bar', firstParagraph: 'words', secondParagraph: 'letters', thirdParagraph: 'numbers' })
-data.appendChild(dummyArticle)
+articleMakerObj.appendChild(dummyArticle)
